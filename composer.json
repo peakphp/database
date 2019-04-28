@@ -1,0 +1,21 @@
+{
+    "name": "peak/database",
+    "description": "Laravel database wrapper + migration with Phinx",
+    "keywords": ["peak", "database", "migrations", "laravel", "phinx"],
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": ">=7.2",
+        "illuminate/database": "^5.8",
+        "illuminate/events": "^5.8",
+        "robmorgan/phinx": "^0.10.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Peak\\Database\\": "src/"
+        }
+    }
+}
