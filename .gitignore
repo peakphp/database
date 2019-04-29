@@ -25,3 +25,4 @@ DockerfileShell
 /_temp
 /vendor
 /migrations
+/tests/_report
