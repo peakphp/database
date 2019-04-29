@@ -41,10 +41,10 @@ class ConfigService
     }
 
     /**
-     * @param EnvConfig $env
+     * @param EnvConfigInterface $env
      * @return array
      */
-    private function envConfig(EnvConfig $env): array
+    private function envConfig(EnvConfigInterface $env): array
     {
         return $env->getConfig();
     }
