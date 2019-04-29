@@ -2,7 +2,7 @@
 
 namespace Peak\Database\Phinx;
 
-class EnvConfig
+class EnvConfig implements EnvConfigInterface
 {
     /**
      * @var string
