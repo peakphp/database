@@ -1,6 +1,6 @@
 # Peak/Database
 
-The purpose of this package is to facilitate the integration of [Laravel Database](https://packagist.org/packages/illuminate/database) and [Phinx migration](https://packagist.org/packages/robmorgan/phinx) for any application as standalone.
+The purpose of this package is to facilitate the integration of [Laravel Database](https://packagist.org/packages/illuminate/database) and [Phinx migration](https://packagist.org/packages/robmorgan/phinx) in any standalone application or framework.
 
 ## Installation
 
