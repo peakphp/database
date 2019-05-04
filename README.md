@@ -2,12 +2,33 @@
 
 The purpose of this package is to facilitate the integration of [Laravel Database](https://packagist.org/packages/illuminate/database) and [Phinx migration](https://packagist.org/packages/robmorgan/phinx) for any application as standalone.
 
-# Installation
+## Installation
 
      composer require peak/database
+  
+## Database Usage
+
+```php
+use Peak\Database\Laravel\DatabaseService;
+
+$config = [
+    'driver' => 'mysql',
+    'host' => 'localhost',
+    'port' => '3306',
+    'database' => 'database',
+    'username' => 'root',
+    'password' => 'root',
+    'charset' => 'utf8mb4',
+    'collation' => 'utf8mb4_unicode_ci',
+    'prefix' => '',
+];
+    
+$db = (new DatabaseService())->createConnection($config, 'connectionName');
+```
+
+That's it! Check out [Laravel Query Builder](https://laravel.com/docs/5.8/queries) for more info on how to make queries.
      
-     
-# Usage
+## Migration Usage
 
 For database migrations, create a file at the root of your project name ```phinx.php```. This file should return an array of Phinx configuration.
 
