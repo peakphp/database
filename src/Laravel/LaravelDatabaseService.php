@@ -9,7 +9,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Database\Connection;
 use Illuminate\Events\Dispatcher;
 
-class DatabaseService
+class LaravelDatabaseService
 {
     /**
      * @param array $config

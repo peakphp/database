@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Peak\Database\Laravel;
+namespace Peak\Database\Common;
 
 use Illuminate\Database\Connection;
 use Illuminate\Database\Schema\Blueprint;
+use Peak\Database\Laravel\LaravelConnectionManager;
 use Phinx\Migration\AbstractMigration;
 
-class PhinxMigration extends AbstractMigration
+class LaravelPhinxMigration extends AbstractMigration
 {
     /**
      * @var Connection
@@ -21,7 +22,7 @@ class PhinxMigration extends AbstractMigration
      */
     public function init()
     {
-        $this->db = ConnectionManager::getConnection($this->getEnvironment());
+        $this->db = LaravelConnectionManager::getConnection($this->getEnvironment());
     }
 
     /**

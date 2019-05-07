@@ -2,7 +2,7 @@
 
 namespace Peak\Database\Phinx;
 
-interface EnvConfigInterface
+interface PhinxEnvConfigInterface
 {
     public function getConfig(): array;
 }

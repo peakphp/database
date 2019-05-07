@@ -1,6 +1,6 @@
 <?php
 
-use Peak\Database\Laravel\ConnectionManager;
+use Peak\Database\Laravel\LaravelConnectionManager;
 use Illuminate\Database\Connection;
 
 class ConnectionManagerTest extends \PHPUnit\Framework\TestCase
@@ -12,13 +12,13 @@ class ConnectionManagerTest extends \PHPUnit\Framework\TestCase
      */
     public function testWildcard()
     {
-        ConnectionManager::flushAll();
-        ConnectionManager::setConnection(
+        LaravelConnectionManager::flushAll();
+        LaravelConnectionManager::setConnection(
             $this->createMock(Connection::class)
         );
 
-        $this->assertTrue(ConnectionManager::getConnection('dev') instanceof Connection);
-        $this->assertTrue(ConnectionManager::getConnection('prod') instanceof Connection);
+        $this->assertTrue(LaravelConnectionManager::getConnection('dev') instanceof Connection);
+        $this->assertTrue(LaravelConnectionManager::getConnection('prod') instanceof Connection);
     }
 
     /**
@@ -26,14 +26,14 @@ class ConnectionManagerTest extends \PHPUnit\Framework\TestCase
      */
     public function testException1()
     {
-        ConnectionManager::flushAll();
+        LaravelConnectionManager::flushAll();
         $this->expectException(\Exception::class);
-        ConnectionManager::setConnection(
+        LaravelConnectionManager::setConnection(
             $this->createMock(Connection::class),
             'dev'
         );
 
-        ConnectionManager::getConnection('prod');
+        LaravelConnectionManager::getConnection('prod');
     }
 
     /**
@@ -41,9 +41,9 @@ class ConnectionManagerTest extends \PHPUnit\Framework\TestCase
      */
     public function testException2()
     {
-        ConnectionManager::flushAll();
+        LaravelConnectionManager::flushAll();
         $this->expectException(\Exception::class);
-        ConnectionManager::getConnection('prod');
+        LaravelConnectionManager::getConnection('prod');
     }
 
 }

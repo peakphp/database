@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Peak\Database\Phinx;
 
-class ConfigService
+class PhinxConfigService
 {
     /**
      * @param mixed $paths
      * @param string $migrationBaseClass
      * @param string $envDefaultMigrationTable
      * @param string $envDefaultDatabase
-     * @param array<EnvConfig> $envs
+     * @param array<PhinxEnvConfig> $envs
      * @return array
      */
     public function create(
@@ -41,10 +41,10 @@ class ConfigService
     }
 
     /**
-     * @param EnvConfigInterface $env
+     * @param PhinxEnvConfigInterface $env
      * @return array
      */
-    private function envConfig(EnvConfigInterface $env): array
+    private function envConfig(PhinxEnvConfigInterface $env): array
     {
         return $env->getConfig();
     }

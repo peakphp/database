@@ -6,7 +6,7 @@ namespace Peak\Database\Laravel;
 
 use Illuminate\Database\Connection;
 
-class ConnectionManager
+class LaravelConnectionManager
 {
     /**
      * @var array<string,Connection>

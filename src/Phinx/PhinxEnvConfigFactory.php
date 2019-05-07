@@ -4,7 +4,7 @@ namespace Peak\Database\Phinx;
 
 use \Closure;
 
-class EnvConfigFactory implements EnvConfigInterface
+class PhinxEnvConfigFactory implements PhinxEnvConfigInterface
 {
     /**
      * @var string

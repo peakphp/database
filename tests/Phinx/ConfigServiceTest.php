@@ -1,9 +1,9 @@
 <?php
 
-use Peak\Database\Laravel\PhinxMigration;
-use Peak\Database\Phinx\ConfigService;
-use Peak\Database\Phinx\EnvConfig;
-use Peak\Database\Phinx\EnvConfigFactory;
+use Peak\Database\Common\LaravelPhinxMigration;
+use Peak\Database\Phinx\PhinxConfigService;
+use Peak\Database\Phinx\PhinxEnvConfig;
+use Peak\Database\Phinx\PhinxEnvConfigFactory;
 
 class ConfigServiceTest extends \PHPUnit\Framework\TestCase
 {
@@ -12,7 +12,7 @@ class ConfigServiceTest extends \PHPUnit\Framework\TestCase
         'paths' => [
             'migrations' => 'my/path',
         ],
-        'migration_base_class' => 'Peak\\Database\\Laravel\\PhinxMigration',
+        'migration_base_class' => LaravelPhinxMigration::class,
         'environments' => [
             'default_migration_table' => 'migrationsTable',
             'default_database' => 'prod',
@@ -29,19 +29,19 @@ class ConfigServiceTest extends \PHPUnit\Framework\TestCase
 
     public function testConfig1()
     {
-        $configService = new ConfigService();
+        $configService = new PhinxConfigService();
 
         $config = $configService->create(
             'my/path',
-            PhinxMigration::class,
+            LaravelPhinxMigration::class,
             'migrationsTable',
             'prod',
             [
-                new EnvConfig('prod', [
+                new PhinxEnvConfig('prod', [
                     'name' => 'name1',
                     'connection' => 'connection1',
                 ]),
-                new EnvConfig('dev', [
+                new PhinxEnvConfig('dev', [
                     'name' => 'name2',
                     'connection' => 'connection2',
                 ])
@@ -53,21 +53,21 @@ class ConfigServiceTest extends \PHPUnit\Framework\TestCase
 
     public function testEnvConfigFactory()
     {
-        $configService = new ConfigService();
+        $configService = new PhinxConfigService();
 
         $config = $configService->create(
             'my/path',
-            PhinxMigration::class,
+            LaravelPhinxMigration::class,
             'migrationsTable',
             'prod',
             [
-                new EnvConfigFactory('prod', function() {
+                new PhinxEnvConfigFactory('prod', function() {
                     return [
                         'name' => 'name1',
                         'connection' => 'connection1',
                     ];
                 }),
-                new EnvConfigFactory('dev', function() {
+                new PhinxEnvConfigFactory('dev', function() {
                     return [
                         'name' => 'name2',
                         'connection' => 'connection2',

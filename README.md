@@ -37,39 +37,37 @@ For database migrations, create a file at the root of your project name ```phinx
 
 namespace {
 
-    use Peak\Database\Laravel\DatabaseService;
-    use Peak\Database\Laravel\ConnectionManager;
-    use Peak\Database\Laravel\PhinxMigration;
-    use Peak\Database\Phinx\ConfigService;
-    use Peak\Database\Phinx\EnvConfig;
+    use Peak\Database\Common\LaravelPhinxMigration;
+    use Peak\Database\Laravel\LaravelDatabaseService;
+    use Peak\Database\Laravel\LaravelConnectionManager;
+    use Peak\Database\Phinx\PhinxConfigService;
+    use Peak\Database\Phinx\PhinxEnvConfig;
 
     require __DIR__.'/vendor/autoload.php';
 
-    $env = getenv();
-    $config = [
-        'driver' => $env['DB_DRIVER'],
-        'host' => $env['DB_HOST'],
-        'port' => $env['DB_PORT'],
-        'database' => $env['DB_DATABASE'],
-        'username' => $env['DB_USERNAME'],
-        'password' => $env['DB_PASSWORD'],
-        'charset' => $env['DB_CHARSET'],
-        'collation' => $env['DB_COLLATION'],
-        'prefix' => $env['DB_PREFIX'],
-    ];
-
     try {
-        $db = (new DatabaseService())->createConnection($config, 'connectionName');
-        ConnectionManager::setConnection($db, 'prod');
+        $env = getenv();
+        $db = (new LaravelDatabaseService())->createConnection([
+           'driver' => $env['DB_DRIVER'],
+           'host' => $env['DB_HOST'],
+           'port' => $env['DB_PORT'],
+           'database' => $env['DB_DATABASE'],
+           'username' => $env['DB_USERNAME'],
+           'password' => $env['DB_PASSWORD'],
+           'charset' => $env['DB_CHARSET'],
+           'collation' => $env['DB_COLLATION'],
+           'prefix' => $env['DB_PREFIX'],
+       ], 'connectionName');
+        LaravelConnectionManager::setConnection($db, 'prod');
 
-        return (new ConfigService())
+        return (new PhinxConfigService())
             ->create(
                 'migrations',
-                PhinxMigration::class,
+                LaravelPhinxMigration::class,
                 'migrations',
                 'prod',
                 [
-                    new EnvConfig('prod', [
+                    new PhinxEnvConfig('prod', [
                         'name' => $db->getDatabaseName(),
                         'connection' => $db->getPdo(),
                     ])
@@ -87,10 +85,10 @@ This ``phinx.php`` above will allow the usage of Laravel Database directly in yo
 ```php
 <?php
 
-use Peak\Database\Laravel\PhinxMigration;
+use Peak\Database\Laravel\LaravelPhinxMigration;
 use Illuminate\Database\Schema\Blueprint;
 
-class Users extends PhinxMigration
+class Users extends LaravelPhinxMigration
 {
     public function up()
     {
