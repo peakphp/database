@@ -21,7 +21,7 @@ class PhinxMigration extends AbstractMigration
      */
     public function init()
     {
-        $this->db = ConnectionManager::getConnection();
+        $this->db = ConnectionManager::getConnection($this->getEnvironment());
     }
 
     /**
