@@ -60,7 +60,7 @@ namespace {
 
     try {
         $db = (new DatabaseService())->createConnection($config, 'connectionName');
-        ConnectionManager::setConnection($db);
+        ConnectionManager::setConnection($db, 'prod');
 
         return (new ConfigService())
             ->create(
