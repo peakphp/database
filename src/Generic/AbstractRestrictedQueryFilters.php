@@ -28,7 +28,7 @@ abstract class AbstractRestrictedQueryFilters extends QueryFilters
     }
 
     /**
-     * @return string
+     * @param string $column
      * @throws \Exception
      */
     private function validateColumn(string $column)
@@ -39,7 +39,7 @@ abstract class AbstractRestrictedQueryFilters extends QueryFilters
     }
 
     /**
-     * @return string
+     * @param string $operator
      * @throws \Exception
      */
     private function validateOperator(string $operator)
@@ -51,7 +51,7 @@ abstract class AbstractRestrictedQueryFilters extends QueryFilters
 
     /**
      * @param string $column
-     * @param $value
+     * @param mixed $value
      * @param string $operator
      * @return mixed
      * @throws \Exception
@@ -64,7 +64,7 @@ abstract class AbstractRestrictedQueryFilters extends QueryFilters
 
     /**
      * @param string $column
-     * @param $value
+     * @param mixed $value
      * @param string $operator
      * @return mixed
      * @throws \Exception
@@ -89,7 +89,7 @@ abstract class AbstractRestrictedQueryFilters extends QueryFilters
 
     /**
      * @param $column
-     * @param $values
+     * @param mixed $values
      * @return mixed
      * @throws \Exception
      */

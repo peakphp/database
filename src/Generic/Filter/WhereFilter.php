@@ -17,14 +17,14 @@ class WhereFilter implements WhereFilterInterface
     private $value;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $operator;
 
     /**
      * WhereFilter constructor.
      * @param string $column
-     * @param $value
+     * @param mixed $value
      * @param string|null $operator
      */
     public function __construct(string $column, $value, ?string $operator = '=')

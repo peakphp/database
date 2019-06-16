@@ -17,8 +17,9 @@ class PhinxEnvConfigFactory implements PhinxEnvConfigInterface
     private $envConfigClosure;
 
     /**
+     * PhinxEnvConfigFactory constructor.
      * @param string $envName
-     * @param array $envConfig
+     * @param Closure $envConfigClosure
      */
     public function __construct(string $envName, Closure $envConfigClosure)
     {
