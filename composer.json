@@ -1,17 +1,23 @@
 {
     "name": "peak/database",
-    "description": "Laravel database wrapper + migration with Phinx",
-    "keywords": ["peak", "database", "migrations", "laravel", "phinx"],
+    "description": "Database generic tooling + Laravel database wrapper + database migration with Phinx",
+    "keywords": ["peak", "database", "migrations", "laravel", "phinx", "tools"],
     "license": "MIT",
     "type": "library",
     "require": {
-        "php": ">=7.2",
-        "illuminate/database": "^5.8",
-        "illuminate/events": "^5.8",
-        "robmorgan/phinx": "^0.10.6"
+        "php": ">=7.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.1"
+        "phpunit/phpunit": "^8.2",
+        "phpstan/phpstan": "^0.11",
+        "illuminate/database": "^5.8",
+        "illuminate/events": "^5.8",
+        "robmorgan/phinx": "^0.10"
+    },
+    "suggest": {
+        "illuminate/database": "Needed for using Peak\\Database\\Laravel",
+        "illuminate/events" : "Needed for using Peak\\Database\\Laravel",
+        "robmorgan/phinx" : "Needed for using database migration Peak\\Database\\Phinx"
     },
     "autoload": {
         "psr-4": {
