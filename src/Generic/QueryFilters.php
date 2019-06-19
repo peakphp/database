@@ -23,11 +23,34 @@ class QueryFilters implements QueryFiltersInterface
     private $filters = [];
 
     /**
+     * @var array<string>
+     */
+    private $columns = [];
+
+    /**
      * @return array
      */
     public function getFilters(): array
     {
         return $this->filters;
+    }
+
+    /**
+     * @return array
+     */
+    public function getColumns(): array
+    {
+        return $this->columns;
+    }
+
+    /**
+     * @param array $columns
+     * @return $this
+     */
+    public function setColumns(array $columns)
+    {
+        $this->columns = $columns;
+        return $this;
     }
 
     public function getIterator()
@@ -94,4 +117,6 @@ class QueryFilters implements QueryFiltersInterface
         $this->filters[] = new OrWhereNotNullFilter($column);
         return $this;
     }
+
+
 }

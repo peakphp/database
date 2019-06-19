@@ -50,6 +50,19 @@ abstract class AbstractRestrictedQueryFilters extends QueryFilters
     }
 
     /**
+     * @param array $columns
+     * @return QueryFilters
+     * @throws \Exception
+     */
+    public function setColumns(array $columns)
+    {
+        foreach ($columns as $column) {
+            $this->validateColumn($column);
+        }
+        return parent::setColumns($columns);
+    }
+
+    /**
      * @param string $column
      * @param mixed $value
      * @param string $operator

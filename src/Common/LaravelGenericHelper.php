@@ -67,6 +67,11 @@ class LaravelGenericHelper
             }
         }
 
+        $columns = $queryFilters->getColumns();
+        if (!empty($columns)) {
+            $qb->select($columns);
+        }
+
         return $qb;
     }
 

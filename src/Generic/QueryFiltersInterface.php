@@ -8,6 +8,9 @@ interface QueryFiltersInterface extends \IteratorAggregate
 {
     public function getFilters(): array;
 
+    public function getColumns(): array;
+    public function setColumns(array $columns);
+
     public function where(string $column, $value, string $operator = '=');
     public function orWhere(string $column, $value, string $operator = '=');
 

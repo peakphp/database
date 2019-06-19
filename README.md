@@ -131,6 +131,7 @@ Example of creating generic query "where" filters and generic query "pagination"
 
 $queryFilters = new QueryFilters();
 $queryFilters
+    ->setColumns(['id', 'title'])
     ->where('level', '6', '>')
     ->orWhere('level', '2', '<')
     ->orWhereArray((new QueryFilters())
