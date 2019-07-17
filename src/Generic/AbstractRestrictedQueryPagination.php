@@ -24,7 +24,7 @@ abstract class AbstractRestrictedQueryPagination extends QueryPagination
     {
         $value = parent::getOrderBy();
         if (!in_array($value, $this->allowedColumns)) {
-            throw new \Exception('Expected orderBy to be '.implode('or ', $this->allowedColumns).'. Received "'.$value.'"');
+            throw new \Exception('Expected orderBy to be '.implode(' or ', $this->allowedColumns).'. Received "'.$value.'"');
         }
         return $value;
     }
@@ -37,7 +37,7 @@ abstract class AbstractRestrictedQueryPagination extends QueryPagination
     {
         $value = parent::getDirection();
         if (!in_array($value, $this->allowedDirections)) {
-            throw new \Exception('Expected direction to be '.implode('or ', $this->allowedDirections).'. Received "'.$value.'"');
+            throw new \Exception('Expected direction to be '.implode(' or ', $this->allowedDirections).'. Received "'.$value.'"');
         }
         return $value;
     }
