@@ -51,6 +51,41 @@ class RestrictedQueryPaginationTest extends \PHPUnit\Framework\TestCase
         $qp->getDirection();
     }
 
+    /**
+     * @throws Exception
+     */
+    public function testPrefixedTableColumnName()
+    {
+        $qp = new UserPagination(
+            'user.id',
+            'asc',
+            1,
+            10
+        );
+
+        $this->assertTrue($qp->getOrderBy() === 'user.id');
+
+        $qp = new UserPagination(
+            '`user`.`id`',
+            'asc',
+            1,
+            10
+        );
+
+        $this->assertTrue($qp->getOrderBy() === '`user`.`id`');
+
+
+        $this->expectException(\Exception::class);
+        $qp = new UserPagination(
+            '`user`.`unknown`',
+            'asc',
+            1,
+            10
+        );
+
+        $this->assertTrue($qp->getOrderBy() === '`user`.`id`');
+    }
+
 }
 
 
